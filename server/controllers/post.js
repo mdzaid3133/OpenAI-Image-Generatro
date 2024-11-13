@@ -29,7 +29,6 @@ const createPost = async (req, res) => {
     const { name, prompt,photo } = req.body;
      const userId = req.user.id;
 
-      console.log("myuserid", userId);
 
     // Validate required fields
     if (!name || !prompt ||!photo ) {

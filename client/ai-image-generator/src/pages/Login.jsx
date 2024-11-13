@@ -15,7 +15,6 @@ const Login = () => {
     };
 
     const handleSubmit = async (e) => {
-        console.log('gunction triggered')
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -34,7 +33,6 @@ const Login = () => {
             if (response.status) {
                 setFormData({ username: '', email: '' });
                 setSuccess('User login successfully');
-                console.log(response?.data?.user)
                 localStorage.setItem("user", JSON.stringify(response.data?.user));
                 navigate('/');
             }

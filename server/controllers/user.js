@@ -13,7 +13,6 @@ export const register = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
 
-    console.log(username, email, password);
 
     // Validate input fields
     if (!username || !email || !password) {
@@ -56,8 +55,6 @@ export const login = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    console.log(user)
-
      const isMatch = await bcrypt.compare(password,user.password);
      console.log(isMatch)
     if (!user || !isMatch) {
@@ -66,7 +63,6 @@ export const login = async (req, res) => {
 
     const token = generateToken(user);
 
-     console.log('token: ' + token);
     res.cookie('token', token, cookieOptions);
 
     res.status(200).json({
